@@ -71,9 +71,9 @@ if cuda:
     if opt.src_id: G_src = G_src.cuda()
 
 # Load pretrained models
-encoder.load_state_dict(torch.load("saved_models/%s/encoder_%02d.pth" % (opt.model_name, opt.epoch)))
-G_trg.load_state_dict(torch.load("saved_models/%s/G%s_%02d.pth" % (opt.model_name, opt.trg_id, opt.epoch)))
-if opt.src_id: G_src.load_state_dict(torch.load("saved_models/%s/G%s_%02d.pth" % (opt.model_name, opt.src_id, opt.epoch)))
+encoder.load_state_dict(torch.load("saved_models/%s/encoder_%02d.pth" % (opt.model_name, opt.epoch),map_location=torch.device('cpu')))
+G_trg.load_state_dict(torch.load("saved_models/%s/G%s_%02d.pth" % (opt.model_name, opt.trg_id, opt.epoch),map_location=torch.device('cpu')))
+if opt.src_id: G_src.load_state_dict(torch.load("saved_models/%s/G%s_%02d.pth" % (opt.model_name, opt.src_id, opt.epoch),map_location=torch.device('cpu')))
 
 # Set to eval mode 
 encoder.eval()
